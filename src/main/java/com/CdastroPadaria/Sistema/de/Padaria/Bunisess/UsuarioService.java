@@ -26,25 +26,18 @@ public class UsuarioService {
     public Usuario atualizarPorCpf(String cpf ,Usuario usuario){
         Usuario usuarioEntities =  reposity.findByCpf(cpf)
                 .orElseThrow(()-> new RuntimeException("Usuario nao encontrado "));
-        if(usuario.getNome() !=null){
-            usuarioEntities.setNome(usuario.getNome());
-        }
-        if(usuario.getCpf()!= null){
-            usuarioEntities.setCpf(usuario.getNome());
-        }
-        if(usuario.getEmail()!=null){
-            usuarioEntities.setEmail(usuario.getEmail());
-        }
-        if(usuario.getDatanascimento()!= null){
-            usuarioEntities.setDatanascimento(usuario.getDatanascimento());
-        }
-        if(usuario.getTelefone()!=null){
-            usuarioEntities.setTelefone(usuario.getTelefone());
-        }
-        return reposity.save(usuarioEntities);
+        Usuario usuarioAtual = usuario.builder()
+                .nome(usuario.getNome() != null ? usuario.getNome() : usuarioEntities.getNome())
+                .telefone(usuario.getTelefone()!= null ? usuario.getTelefone(): usuarioEntities.getTelefone())
+                .email(usuario.getEmail()!= null ? usuario.getEmail(): usuarioEntities.getEmail())
+                .datanascimento(usuario.getDatanascimento()!= null ? usuario.getDatanascimento(): usuarioEntities.getDatanascimento())
+                .cpf(usuarioEntities.getCpf())
+                .build();
+        return usuarioAtual;
 
-    }
-        public List<Usuario>ListarTodos(){
-        return reposity.findAll();
-        }
+
+
+
+
 }
+    }

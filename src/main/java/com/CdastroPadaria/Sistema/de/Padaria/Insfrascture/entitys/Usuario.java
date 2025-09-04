@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private  Long id;
     @Column(name = "nome")
     private String nome;
     @Column(name = "cpf",unique = true)

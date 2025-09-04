@@ -12,17 +12,30 @@ import java.util.List;
 @RequestMapping("/usuario")
 public class UsuarioController {
     private final UsuarioService service;
+    private final UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService service) {
+    public UsuarioController(UsuarioService service, UsuarioService usuarioService) {
         this.service = service;
+        this.usuarioService = usuarioService;
     }
     @PostMapping
     public ResponseEntity<Void>salvarUusario( @RequestBody Usuario usuario){
         return ResponseEntity.ok().build();
     }
+
     @GetMapping
-    public ResponseEntity<List<Usuario>>listarTodos(){
+    public ResponseEntity<Usuario>buscarUsuarioPorCpf(@RequestParam String cpf){
+        return ResponseEntity.ok(usuarioService.buscarPorCpf(cpf));
+    }
+    @DeleteMapping
+    public ResponseEntity<Void>deletarUsuarioPorCpf(@RequestParam String cpf){
+        usuarioService.deletarPorCpf(cpf);
         return ResponseEntity.ok().build();
     }
+    @PutMapping
+    public ResponseEntity<Void>atualizarUsuario(@RequestBody Usuario usuario){
+        return ResponseEntity.ok().build();
+    }
+
 
 }
