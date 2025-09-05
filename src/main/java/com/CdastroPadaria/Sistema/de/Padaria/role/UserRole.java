@@ -4,23 +4,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum UserRole {
-    ADMIN("adimin"),
+    ADMIN("admin"),
     USER("user");
-    private String role;
-    UserRole(String role){
-        this.role=role;
+
+    private final String role;
+
+    UserRole(String role) {
+        this.role = role;
     }
+
     @JsonValue
-    public String getRole(){
-        return  role;
+    public String getRole() {
+        return role;
     }
+
     @JsonCreator
-    public static UserRole fromValue(String value){
-        for (UserRole role : UserRole.values()){
-            if (role.role.equalsIgnoreCase(value)){
+    public static UserRole fromValue(String value) {
+        for (UserRole role : UserRole.values()) {
+            if (role.role.equalsIgnoreCase(value)) {
                 return role;
             }
         }
-        throw  new IllegalAccessException("Invalido role "+ value);
+        throw new IllegalArgumentException("Invalid role: " + value); // corrigido
     }
 }
