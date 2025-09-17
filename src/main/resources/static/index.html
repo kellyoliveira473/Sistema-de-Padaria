@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Padaria - Delícias do Pão</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<header>
+    <h1>Delícias do Pão</h1>
+    <nav>
+        <ul>
+            <li><a href="#cadastro">Cadastrar Cliente</a></li>
+            <li><a href="#cardapio">Cardápio</a></li>
+            <li><a href="#carrinho">Meu Carrinho (<span id="cart-count">0</span>)</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="cadastro" class="container">
+        <h2>Cadastre-se</h2>
+        <form id="cadastro-form">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" maxlength="11" pattern="\d{11}" placeholder="Somente números" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" pattern="\d{10,11}" placeholder="Ex: 11987654321" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento" required>
+            </div>
+            <button type="submit" class="btn">Cadastrar</button>
+        </form>
+        <div id="cadastro-feedback" class="feedback"></div>
+    </section>
+
+    <section id="cardapio" class="container">
+        <h2>Nosso Cardápio</h2>
+        <div class="product-grid" id="product-list">
+
+            <div class="product-card" data-id="1" data-name="Pão Francês (unid)" data-price="0.80">
+                <img src="https://via.placeholder.com/150x150?text=Pao+Frances" alt="Pão Francês">
+                <h3>Pão Francês (unid)</h3>
+                <p class="price">R$ 0,80</p>
+                <button class="add-to-cart-btn btn">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card" data-id="2" data-name="Baguete" data-price="4.50">
+                <img src="https://via.placeholder.com/150x150?text=Baguete" alt="Baguete">
+                <h3>Baguete</h3>
+                <p class="price">R$ 4,50</p>
+                <button class="add-to-cart-btn btn">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card" data-id="3" data-name="Croissant" data-price="5.50">
+                <img src="https://via.placeholder.com/150x150?text=Croissant" alt="Croissant">
+                <h3>Croissant</h3>
+                <p class="price">R$ 5,50</p>
+                <button class="add-to-cart-btn btn">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card" data-id="4" data-name="Sonho de Doce de Leite" data-price="6.00">
+                <img src="https://via.placeholder.com/150x150?text=Sonho" alt="Sonho de Doce de Leite">
+                <h3>Sonho de Doce de Leite</h3>
+                <p class="price">R$ 6,00</p>
+                <button class="add-to-cart-btn btn">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card" data-id="5" data-name="Fatia Bolo de Cenoura" data-price="8.50">
+                <img src="https://via.placeholder.com/150x150?text=Bolo+de+Cenoura" alt="Fatia Bolo de Cenoura">
+                <h3>Fatia Bolo de Cenoura</h3>
+                <p class="price">R$ 8,50</p>
+                <button class="add-to-cart-btn btn">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card" data-id="6" data-name="Café Expresso" data-price="3.50">
+                <img src="https://via.placeholder.com/150x150?text=Cafe+Expresso" alt="Café Expresso">
+                <h3>Café Expresso</h3>
+                <p class="price">R$ 3,50</p>
+                <button class="add-to-cart-btn btn">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card" data-id="7" data-name="Torta de Limão" data-price="7.50">
+                <img src="https://via.placeholder.com/150x150?text=Torta+de+Limao" alt="Torta de Limão">
+                <h3>Torta de Limão</h3>
+                <p class="price">R$ 7,50</p>
+                <button class="add-to-cart-btn btn">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card" data-id="8" data-name="Coxinha de Frango" data-price="5.00">
+                <img src="https://via.placeholder.com/150x150?text=Coxinha" alt="Coxinha de Frango">
+                <h3>Coxinha de Frango</h3>
+                <p class="price">R$ 5,00</p>
+                <button class="add-to-cart-btn btn">Adicionar ao Carrinho</button>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="carrinho" class="container">
+        <h2>Meu Carrinho de Compras</h2>
+        <div id="cart-items">
+            <p>Seu carrinho está vazio.</p>
+        </div>
+        <div class="cart-summary">
+            <p>Total: R$ <span id="cart-total">0.00</span></p>
+            <button id="finalizar-compra" class="btn primary-btn" disabled>Finalizar Compra via WhatsApp</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2023 Delícias do Pão. Todos os direitos reservados.</p>
+</footer>
+
+<script src="../static/js/script.js"></script>
+</body>
+</html>
