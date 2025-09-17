@@ -1,6 +1,7 @@
 package com.segurancaa.kelly.Controller;
 
-import com.segurancaa.kelly.Infrascture.Repository.UserRepository;
+
+import com.CdastroPadaria.Sistema.de.Padaria.Insfrascture.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

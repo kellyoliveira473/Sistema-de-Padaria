@@ -1,5 +1,6 @@
 package com.CdastroPadaria.Sistema.de.Padaria.role;
 
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
